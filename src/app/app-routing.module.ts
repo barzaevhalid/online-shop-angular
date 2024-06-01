@@ -8,11 +8,15 @@ import {MainPageComponent} from "./main-page/main-page.component";
 const routes: Routes = [
   {
     path: "", component: MainLayoutComponent, children: [
-      {path: "", redirectTo: "home", pathMatch: "full"},
-      {path: "home", component: MainPageComponent},
+      {path: "", redirectTo:"", pathMatch: "full"},
+      {path: "",  component: MainPageComponent},
       {path: "product/:id", component: ProductPageComponent},
-      {path: "cart", component: CartPageComponent}
+      {path: "cart", component: CartPageComponent},
     ]
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   }
 ];
 
